@@ -1,0 +1,96 @@
+<!-- your-component.component.html -->
+
+<div class="container"  style="border-style: solid; border-color: blue; border-radius: 5px" id="content" >
+  <h5 style="color: blue; text-align: center;">Customer Name/Address change</h5>
+  <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+    <!-- Top buttons -->
+    <div class="d-flex justify-content-end   mb-3">
+      <button type="button" class="btn btn-primary" (click)="editMode()">Edit</button>
+      <div>
+    <button type="button" class="btn btn-success" (click)="generatePdf()">export pdf</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Left side -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="companynameexisting">Company Name (Existing)</label>
+          <input type="text" class="form-control" id="companynameexisting" name="companynameexisting" [disabled]="!isEditMode" [(ngModel)]="user.companyNameExisting" >
+        </div>
+        <div class="form-group">
+          <label for="incorporation">Country of Incorporation</label>
+          <input type="text" class="form-control" id="incorporation" name="incorporation" [disabled]="!isEditMode" [(ngModel)]="user.countryOfIncorporation">
+        </div>
+        <div class="form-group">
+          <label for="street">Street Details</label>
+          <input type="text" class="form-control" id="street" name="street" [disabled]="!isEditMode" [(ngModel)]="user.streetDetails">
+        </div>
+        <div class="form-group">
+          <label for="contactpersonname">Contact Person Name</label>
+          <input type="text" class="form-control" id="contactpersonname" name="contactpersonname" [disabled]="!isEditMode" [(ngModel)]="user.contactPersonName">
+        </div>
+        <div class="form-group">
+          <label for="countryCode">Country Code</label>
+          <input type="text" class="form-control" id="countryCode" name="countryCode" [disabled]="!isEditMode" [(ngModel)]="user.countryCode">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" class="form-control" id="country" name="country" [disabled]="!isEditMode" [(ngModel)]="user.country">
+        </div>
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" name="city" [disabled]="!isEditMode" [(ngModel)]="user.city">
+        </div>
+        <div class="form-group">
+          <label for="customerrequest">Customer Request</label>
+          <input type="file" class="form-control-file" id="customerrequest" name="customerrequest" (change)="handleFileInput($event)" [disabled]="!isEditMode" [(ngModel)]="user.customerRequest" >
+        </div>
+      </div>
+
+      <!-- Right side -->
+      <div class="col-md-6">
+        
+
+        <!-- Form fields -->
+        <div class="form-group">
+          <label for="companynamenew">Company Name (New)</label>
+          <input type="text" class="form-control" id="companynamenew" name="companynamenew" [disabled]="!isEditMode" [(ngModel)]="user.companyNameNew">
+        </div>
+        <div class="form-group">
+          <label for="address">Address (if any change in address within the same country)</label>
+          <input type="text" class="form-control" id="address" name="address" [disabled]="!isEditMode" [(ngModel)]="user.address">
+        </div>
+        <div class="form-group">
+          <label for="companywebsite">Company Website</label>
+          <input type="text" class="form-control" id="companywebsite" name="companywebsite" [disabled]="!isEditMode" [(ngModel)]="user.companyWebsite">
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="text" class="form-control" id="email" name="email" [disabled]="!isEditMode" [(ngModel)]="user.emailAddress">
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input type="text" class="form-control" id="contact" name="contact" [disabled]="!isEditMode" [(ngModel)]="user.contactNumber">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" id="state" name="state" [disabled]="!isEditMode" [(ngModel)]="user.state">
+        </div>
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input type="text" class="form-control" id="pincode" name="pincode" [disabled]="!isEditMode" [(ngModel)]="user.pincode">
+        </div>
+        <div class="form-group">
+          <label for="proof">Proof of Identity</label>
+          <input type="file" class="form-control-file" id="proof" name="proof" (change)="handleFileInput($event)" [disabled]="!isEditMode" [(ngModel)]="user.proofOfIdentity">
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" [disabled]="!isEditMode">Submit</button>
+  </form>
+</div>
+
+
+<router-outlet></router-outlet>
